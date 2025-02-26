@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página do Professor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bem-vindo, Professor!</h1>
+    <h2>Criar Atividade</h2>
+    <form id="atividade-form">
+      <label for="titulo">Título da Atividade:</label>
+      <input type="text" id="titulo" required placeholder="Digite o título da atividade">
+      <label for="pergunta">Pergunta:</label>
+      <input type="text" id="pergunta" required placeholder="Digite a pergunta">
+      <label for="resposta-a">Resposta A:</label>
+      <input type="text" id="resposta-a" required placeholder="Resposta A">
+      <label for="resposta-b">Resposta B:</label>
+      <input type="text" id="resposta-b" required placeholder="Resposta B">
+      <label for="resposta-c">Resposta C:</label>
+      <input type="text" id="resposta-c" required placeholder="Resposta C">
+      <label for="resposta-correta">Resposta Correta (A, B, C):</label>
+      <input type="text" id="resposta-correta" required placeholder="Escolha a resposta correta">
+      <button type="submit">Criar Atividade</button>
+    </form>
+
+    <footer>
+      <p>SESI Cataguases - Todos os direitos reservados</p>
+    </footer>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script>
+    // Função para criar atividade no Firebase
+    document.getElementById('atividade-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const titulo = document.getElementById('titulo').value;
+      const pergunta = document.getElementById('pergunta').value;
+      const respostaA = document.getElementById('resposta-a').value;
+      const respostaB = document.getElementById('resposta-b').value;
+      const respostaC = document.getElementById('resposta-c').value;
+      const respostaCorreta = document.getElementById('resposta-correta').value;
+
+      const perguntas = [{
+        pergunta: pergunta,
+        respostas: {
+          a: respostaA,
+          b: respostaB,
+          c: respostaC
+        },
+        respostaCorreta: respostaCorreta
+      }];
+
+      criarAtividade(titulo, perguntas);  // Chama a função do Firebase
+    });
+  </script>
+</body>
+</html>
