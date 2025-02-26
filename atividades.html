@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade - Aluno</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Atividade</h1>
+    <h2 id="titulo-atividade">Título da Atividade</h2>
+    <form id="form-atividade">
+      <label for="nome-aluno">Digite seu nome:</label>
+      <input type="text" id="nome-aluno" required placeholder="Digite seu nome">
+      <button type="submit">Iniciar Atividade</button>
+    </form>
+    <footer>
+      <p>SESI Cataguases - Todos os direitos reservados</p>
+    </footer>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script>
+    // Função para começar a atividade
+    document.getElementById('form-atividade').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nomeAluno = document.getElementById('nome-aluno').value;
+      // Aqui você pode começar a atividade com as perguntas e o nome do aluno
+    });
+  </script>
+</body>
+</html>
